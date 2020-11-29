@@ -111,6 +111,5 @@ int main(int argc, const char * argv[]) {
     vector<double> y(10);
     matrixInsert(x, y);
     mnk(x, y, 2, 10);
-//    cout << "yo";
     return 0;
 }
