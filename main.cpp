@@ -27,6 +27,15 @@ vector<double> sle(vector<vector <double>> a, vector <double> y, int n) {
     double max;
     int k, index;
     k = 0;
+//    for(int i = 0; i < a.size(); i++){
+//        for(int j = 0; j < a.size(); j++){
+//            cout << a[i][j] << " ";
+//        }
+//        cout << '\n';
+//    }
+//    for(int i = 0; i < y.size(); i++){
+//        cout << y[i] << " ";
+//    }
     while (k < n) {
         max = abs(a[k][k]);
         index = k;
@@ -64,6 +73,9 @@ vector<double> sle(vector<vector <double>> a, vector <double> y, int n) {
         for (int i = 0; i < k; i++)
             y[i] = y[i] - a[i][k] * x[k];
     }
+//    for(int i = 0; i < a.size(); i++){
+//        cout << x[i] << " ";
+//    }
   return x;
 }
 
@@ -81,7 +93,7 @@ void mnk(vector<double> x, vector<double> y, int m, int N){
     }
     
     for(int i = 0; i < m ; i++){
-        for(int j = 0; j < m ; j++){
+        for(int j = 0; j < m; j++){
             sumX[i][j] = powerX[i + j];
         }
     }
@@ -91,6 +103,7 @@ void mnk(vector<double> x, vector<double> y, int m, int N){
         for(int j = 0; j < N; j++){
             count += x[j] * pow(y[j], j);
         }
+        praw[i] = count;
     }
     vector<double> a = sle(sumX, praw, m );
     count = 0;
