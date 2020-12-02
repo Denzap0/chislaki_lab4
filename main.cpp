@@ -81,10 +81,10 @@ vector<double> sle(vector<vector <double>> a, vector <double> y, int n) {
 
 void mnk(vector<double> x, vector<double> y, int m, int N){
     vector<double> powerX(2*m);
-    vector<vector<double> > sumX(m, vector<double>(m));
-    vector<double> praw(m);
+    vector<vector<double> > sumX(m + 1, vector<double>(m + 1));
+    vector<double> praw(m + 1);
     double count;
-    for(int i = 0; i < 2 * m; i++){
+    for(int i = 0; i < 2 * m + 1; i++){
         count = 0;
         for(int j = 0; j < N; j++){
             count += pow(x[j], i);
@@ -92,29 +92,32 @@ void mnk(vector<double> x, vector<double> y, int m, int N){
         powerX[i] = count;
     }
     
-    for(int i = 0; i < m ; i++){
-        for(int j = 0; j < m; j++){
+    for(int i = 0; i < m + 1 ; i++){
+        for(int j = 0; j < m + 1; j++){
             sumX[i][j] = powerX[i + j];
         }
     }
-    
-    for(int i = 0; i < m ; i++){
+    for(int i = 0; i < m + 1 ; i++){
         count = 0;
         for(int j = 0; j < N; j++){
-            count += x[j] * pow(y[j], j);
+            count += y[j] * pow(x[j], i);
+//            cout << y[j] << " ";
         }
         praw[i] = count;
     }
-    vector<double> a = sle(sumX, praw, m );
+    for(int i = 0; i< m+ 1; i++){
+        cout << praw[i] << " ";
+    }
+    vector<double> a = sle(sumX, praw, m + 1);
     count = 0;
     for(int i = 0; i < N; i++){
         double count2 = y[i];
-        for(int j = 0; j < m ; j++){
+        for(int j = 0; j < m + 1; j++){
             count2 -= a[j] * pow(x[j], j + 1);
         }
         count += count2;
     }
-    double result = sqrt((1.0/(N - m))* count);
+    double result = sqrt((1.0/(N - m + 1))* count);
     cout << result;
 }
 
