@@ -73,14 +73,14 @@ vector<double> sle(vector<vector <double>> a, vector <double> y, int n) {
         for (int i = 0; i < k; i++)
             y[i] = y[i] - a[i][k] * x[k];
     }
-//    for(int i = 0; i < a.size(); i++){
-//        cout << x[i] << " ";
-//    }
+    for(int i = 0; i < a.size(); i++){
+        cout << x[i] << " ";
+    }
   return x;
 }
 
 void mnk(vector<double> x, vector<double> y, int m, int N){
-    vector<double> powerX(2*m);
+    vector<double> powerX(2*m + 1);
     vector<vector<double> > sumX(m + 1, vector<double>(m + 1));
     vector<double> praw(m + 1);
     double count;
@@ -105,9 +105,9 @@ void mnk(vector<double> x, vector<double> y, int m, int N){
         }
         praw[i] = count;
     }
-    for(int i = 0; i< m+ 1; i++){
-        cout << praw[i] << " ";
-    }
+//    for(int i = 0; i< m+ 1; i++){
+//        cout << praw[i] << " ";
+//    }
     vector<double> a = sle(sumX, praw, m + 1);
     count = 0;
     for(int i = 0; i < N; i++){
